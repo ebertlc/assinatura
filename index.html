@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html id="invert" style="filter: invert(0%); background-color: white;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Assinatura de e-mail | Ministério das Cidades e Ministério da Integração e do Desenvolvimento Regional</title>
+    <link rel="icon" href="http://sa.fazenda.gov.br/assinatura/img/favicon.ico" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;1,800;1,900&display=swap">
+    <style type="text/css"> 
+        .bg-blue {
+            background-color: #2969bd;
+        }
+        .bg-red{
+            background-color: red;
+        }
+        nav {
+            margin-bottom: 40px;
+        }
+        .sb-card {
+            padding: 10px;
+            margin-bottom: 30px;
+            border: 1px solid #ededed;
+            background: #f5f5f5;
+            box-shadow: 0 2px 2px 0 #949494;
+        }
+        h2 {
+            margin-bottom: 30px;
+        }
+        #resultado-assinatura {
+            display: none;
+        }
+        xmp { 
+            /*white-space: pre-wrap;*/
+            font-size: 11px; 
+            overflow-x: scroll;
+            width: 100%;
+        }
+        .code-card {
+            border: 1px solid #ededed;
+            background: #f5f5f5;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.1);
+            margin: 0;
+        }
+        .code-card-body {
+            padding: 0;
+        }	
+    </style>
+</head>
+<body>
+    <nav class="navbar-expand-lg navbar-dark bg-blue static-top">
+        <div class="container">
+            <spam class="navbar-brand">
+                <p style="color:white; font-size: 22px;" >
+                    Ministério da Integração e do Desenvolvimento Regional
+                </p>
+                <p>
+                </p>
+            </spam>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>
+                    <strong>Padrão de assinatura de e-mail</strong>
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-7">
+                <p>
+                    Foi criado um novo modelo de assinatura de e-mail que deverá ser utilizado pelos servidores e funcionários do Ministério das Cidades e Ministério da Integração
+                    e do Desenvolvimento Regional. A assinatura deverá ter informações como nome, cargo, órgão, lotação e telefone de contato, conforme modelo apresentado abaixo.
+                </p>
+                <p>
+                    <img src="thumbnail.jpg" width="100%">
+                </p>
+                <p>
+                    <!--
+                        <fieldset class="moldura">
+                        <p>Para atender as necessidades de pessoas com problemas visuais, desenvolvemos uma funcionalidade que inverte as cores deixando a pagina mais acessível
+                            à todos.</p> 
+                    <p>Aplique o filtro deslizando o slider</p>
+                    <input type="range" min="0" max="100" id="rangeInvert" value="0" onchange="aplicaFiltro('invert', 'rangeInvert', 'valorInvert', '%')">
+                    <code>Filtro de Inversão(<input id="valorInvert" value="0%" type="text">)}</code>
+                  </fieldset> 
+                    -->
+                </p>
+            </div>
+            <div class="col-sm-5">
+                <div class="card sb-card">
+                    <div class="card-body">
+                        <h4>Crie sua assinatura:</h4>
+                        <form>
+                            <div class="form-group">
+                                <label for="fnome">Nome</label>
+                                <input id="fnome" class="form-control" placeholder="Nome completo" autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label for="fcargo">Cargo</label>
+                                <select id="fcargo" class="form-control" data-live-search="true" autocomplete="off">
+                                    <option>Advogado(a) da União</option>
+                                    <option>Agente Administrativo</option>
+                                    <option>Agente de Mecanização de Apoio</option>
+                                    <option>Administrador(a)</option>
+                                    <option>Analista Administrativo</option>
+                                    <option>Analista Ambiental</option>
+                                    <option>Analista de Infraestrutura</option>
+                                    <option>Estagiário(a)</option>
+                                </select>
+                            </div>
+                            <div class="form-group" style="display:none;">
+                                <label for="forgão">Órgão</label>
+                                <span id="forgao">MINISTÉRIO DA INTEGRAÇÃO E DO DESENVOLVIMENTO REGIONAL</span>
+                                <!--<select id="forgao" class="form-control" data-live-search="true" autocomplete="off">
+                                    <option>MINISTÉRIO DA INTEGRAÇÃO E DO DESENVOLVIMENTO REGIONAL</option>
+                                </select>-->
+                            </div>
+                            <div class="form-group">
+                                <label for="flotacao">Lotação</label>
+                                <select id="flotacao" class="form-control" data-live-search="true" autocomplete="off">
+                                    <option>Coordenação de Sistematização de Processos</option>
+                                    <option>Secretaria Nacional de Proteção e Defesa Civil</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fendereco">Endereço</label>
+                                <select id="fendereco" class="form-control" data-live-search="true" autocomplete="off">
+                                    <option>Esplanada dos Ministérios, Bloco 'E'</option>
+                                    <option>SGAN Q.906, Módulo 'F' Bloco 'A' Ed.Celso Furtado</option>
+                                    <option>SPO Área 05 Q. 03, Bloco 'K' CENAD</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ftelefone">Telefone</label>
+                                <input id="ftelefone" class="form-control" style="width: 13em;" placeholder="(xx)xxxx-xxxx" autocomplete="off" maxlength="14">
+                            </div>
+                            <input class="btn btn-success" type="button" value="Gerar assinatura" onclick="gerar_assinatura()">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div id="resultado-assinatura" class="row">
+            <div class="row">
+                <h4>Confira sua assinatura</h4>
+            </div>
+            <div class="row">
+                <p>
+                    Caso a assinatura gerada esteja correta, clique no botão para exportar.
+                </p>
+            </div>
+            <div class="row">
+                <table id="capture" style="min-width:1200px;position:relative; background-image:url('thumbnail.jpg' )" width="1200" height="194">
+                    <tbody>
+                        <tr>
+                            <td style="position:absolute; left:15px; top:15px; color: white; font-size:25px; font-family: Montserrat; font-weight: bold; font-style: italic; text-transform: uppercase;">
+                                <span id="nome"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="position: absolute; left:15px; top:60px; color: white; font-size: 23px; font-family: Calibri; color: white;">
+                                <span id="cargo"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="position: relative;  text-align: center; left:425px; top:50px; color: rgb(24, 62, 255); font-size: 10.7px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; font-weight: bold; color: rgb(24, 62, 255);">
+                                <span id="orgao"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="position: absolute; left:15px; top:90px; color: white; font-size: 23px; font-family: Calibri; color: white;">
+                                <span id="lotacao"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="position: absolute; left:15px; top:120px; color: white; font-size: 23px; font-family: Calibri; color: white;">
+                                <span id="endereco"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="position: relative; left:14px; top:40px; ; color: white; font-size: 23px; font-family: Calibri; color: white;">
+                                <style position: left:=400px; top:=100px;></style>
+                                <img src="iconetelefone.png" width="23">
+                                <span id="telefone"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row" style="margin: 20px 90%; display:inline-flex; text-align: right;">
+                <div class="col-sm-4 text-center">
+                    <button id="btn-outlook" class="btn btn-primary" type="button" data-toggle="modal" data-target="#modal-outlook">
+                        Salvar Assinatura
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal-outlook" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="exampleModalLabel" class="modal-title">Exportar para Outlook Desktop</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">x</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ol>
+                        <li>
+                            Clique com o botão direito na imagem abaixo para salvá-la em seu computador;
+                            <div id="imagem-modal">
+                                <canvas id="img_slv" style="width: 815px;" width="1200" height="194"></canvas>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="col-sm-4 text-center">
+                                <button id="btn-outlook" class="btn btn-primary" type="button" onclick="salvarImagem()">
+                                    Salvar
+                                </button>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        
+        function gerar_assinatura() {
+                document.getElementById("nome").innerHTML = document.getElementById('fnome').value;
+                document.getElementById("cargo").innerHTML = document.getElementById('fcargo').value;
+				document.getElementById("orgao").innerHTML = document.getElementById('forgao').value;
+				document.getElementById("lotacao").innerHTML = document.getElementById('flotacao').value;
+                document.getElementById("telefone").innerHTML = document.getElementById('ftelefone').value;
+				document.getElementById("endereco").innerHTML = document.getElementById('fendereco').value;
+				
+
+                document.getElementById('resultado-assinatura').style.display = "initial";
+            }
+			
+			
+            $('#modal-outlook').on('shown.bs.modal', function () {
+                document.getElementById('imagem-modal').innerHTML = '';
+                html2canvas(document.querySelector("#capture"), {allowCORS : true, allowTaint : true}).then(canvas => {
+                    document.getElementById('imagem-modal').appendChild(canvas);
+                    canvas.style.width  = '815px';
+                    canvas.style.height  = '';
+                });
+            });
+			
+
+            $('#modal-expresso').on('shown.bs.modal', function () {
+                document.getElementsByTagName('xmp')[0].firstChild.data = document.getElementsByTagName('xmp')[0].firstChild.data.replace (/nome_modal/, document.getElementById('fnome').value);
+                document.getElementsByTagName('xmp')[0].firstChild.data = document.getElementsByTagName('xmp')[0].firstChild.data.replace (/cargo_modal/, document.getElementById('fcargo').value);
+				document.getElementsByTagName('xmp')[0].firstChild.data = document.getElementsByTagName('xmp')[0].firstChild.data.replace (/lotacao_modal/, document.getElementById('forgao').value);
+                document.getElementsByTagName('xmp')[0].firstChild.data = document.getElementsByTagName('xmp')[0].firstChild.data.replace (/lotacao_modal/, document.getElementById('flotacao').value);
+                document.getElementsByTagName('xmp')[0].firstChild.data = document.getElementsByTagName('xmp')[0].firstChild.data.replace (/endereco_modal/, document.getElementById('fendereco').value);
+                document.getElementsByTagName('xmp')[0].firstChild.data = document.getElementsByTagName('xmp')[0].firstChild.data.replace (/telefone_modal/, document.getElementById('ftelefone').value);
+                document.getElementsByTagName('xmp')[0].firstChild.data = document.getElementsByTagName('xmp')[0].firstChild.data.replace (/sala_modal/, document.getElementById('fSala').value);
+            });
+
+            $('#modal-outlook-web').on('shown.bs.modal', function () {
+                document.getElementById("mnome").innerHTML = document.getElementById('fnome').value;
+                document.getElementById("mcargo").innerHTML = document.getElementById('fcargo').value;
+				document.getElementById("mcargo").innerHTML = document.getElementById('forgao').value;
+                document.getElementById("mlotacao").innerHTML = document.getElementById('flotacao').value;
+                document.getElementById("mendereco").innerHTML = document.getElementById('fendereco').value;
+                document.getElementById("mtelefone").innerHTML = document.getElementById('ftelefone').value;
+                document.getElementById("msala").innerHTML = document.getElementById('fSala').value;
+                
+            });
+
+           function copyClipboard() {
+              var elm = document.getElementById("divClipboard");
+              // for Internet Explorer
+
+              if(document.body.createTextRange) {
+                var range = document.body.createTextRange();
+                range.moveToElementText(elm);
+                range.select();
+                document.execCommand("Copy");
+                alert("Assinatura copiada!");
+              }
+              else if(window.getSelection) {
+                // other browsers
+
+                var selection = window.getSelection();
+                var range = document.createRange();
+                range.selectNodeContents(elm);
+                selection.removeAllRanges();
+                selection.addRange(range);
+                document.execCommand("Copy");
+                alert("Assinatura copiada!");
+              }
+            }
+    </script>
+    <script>
+			$(document).ready(function(){
+				$('#ftelefone').mask('(00) 0000-0000');
+			});
+    </script>
+    <script>
+        function salvarImagem() {
+            var imagem = document.getElementById("img_slv").src;
+            var link = document.createElement('a');
+            link.href = imagem;
+            link.download = 'minha_imagem.jpg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            }
+    </script>
+</body>
+</html>
